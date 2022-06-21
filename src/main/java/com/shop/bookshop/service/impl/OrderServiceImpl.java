@@ -47,6 +47,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     public Boolean changeAddressByOrderId(Integer orderId, Integer addressId) {
         Order orderInDB = getById(orderId);
         orderInDB.setAddressId(addressId);
+        orderInDB.setUpdateTime(LocalDateTime.now());
         return updateById(orderInDB);
     }
 }
