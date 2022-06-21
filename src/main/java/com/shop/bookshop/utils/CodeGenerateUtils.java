@@ -51,7 +51,6 @@ public class CodeGenerateUtils {
     }
 
     public static String generateUnionPaySn() {
-
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmm");
         String dateTime = dateFormat.format(calendar.getTime());

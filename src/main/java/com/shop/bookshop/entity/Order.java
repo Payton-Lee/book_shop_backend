@@ -16,9 +16,11 @@ public class Order {
     private Integer id;
     private Integer userId;
     private String orderNumber;
+    private String payNumber;
     private Integer bookId;
     @TableField(exist = false)
     private String bookName;
+    private Integer count;
     @TableField(exist = false)
     private String image;
     private double orderPrice;

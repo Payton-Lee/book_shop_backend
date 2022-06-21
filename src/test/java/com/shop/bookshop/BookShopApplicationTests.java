@@ -47,6 +47,9 @@ class BookShopApplicationTests {
         System.out.println(CodeGenerateUtils.generateOrderSn(3L));
         System.out.println(CodeGenerateUtils.generateOrderSn(4L));
         System.out.println(CodeGenerateUtils.generateOrderSn(5L));
+        System.out.println(CodeGenerateUtils.generateUnionPaySn());
+        System.out.println(CodeGenerateUtils.generateUnionPaySn());
+        System.out.println(CodeGenerateUtils.generateUnionPaySn());
     }
 
     @Test
