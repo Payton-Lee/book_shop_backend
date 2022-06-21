@@ -39,6 +39,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setCreateTime(LocalDateTime.now());
         order.setIsSend(0);
         order.setOrderNumber(CodeGenerateUtils.generateOrderSn((long) order.getUserId()));
+        order.setPayNumber(CodeGenerateUtils.generateUnionPaySn());
         return order;
     }
 
