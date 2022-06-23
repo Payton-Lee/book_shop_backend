@@ -2,10 +2,7 @@ package com.shop.bookshop.controller;
 
 import com.shop.bookshop.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
@@ -19,5 +16,10 @@ public class BookController {
     @GetMapping("/booklist")
     public Object getBookList(@RequestParam Integer current, @RequestParam Integer size, @RequestParam String queryInfo) {
         return bookService.pageBookList(current, size, queryInfo);
+    }
+
+    @GetMapping("/{bookId}/booklist")
+    public Object getBookListById(@PathVariable Integer bookId){
+        return bookService.getBookById(bookId);
     }
 }

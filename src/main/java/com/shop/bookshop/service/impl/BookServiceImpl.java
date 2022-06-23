@@ -27,4 +27,9 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
         }
         return bookMapper.pageBookList(bookPage, wrapper);
     }
+
+    @Override
+    public Book getBookById(Integer bookId) {
+        return bookMapper.getBookByBookId(bookId);
+    }
 }

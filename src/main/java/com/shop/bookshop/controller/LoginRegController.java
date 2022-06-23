@@ -31,6 +31,7 @@ public class LoginRegController {
         } else {
             if(userService.checkPassword(user.getPassword(), userInDB.getPassword())) {
                 data.set("username", userInDB.getUsername())
+                        .set("userId", userInDB.getId())
                         .set("msg", "登录成功")
                         .set("token", userService.getToken(userInDB));
                 return ResultData.success(ReturnCode.RC200.code, ReturnCode.RC200.message, data);

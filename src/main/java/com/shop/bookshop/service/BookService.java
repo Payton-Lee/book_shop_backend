@@ -6,4 +6,5 @@ import com.shop.bookshop.entity.Book;
 
 public interface BookService extends IService<Book> {
     Page<Book> pageBookList(Integer current, Integer size, String queryInfo);
+    Book getBookById(Integer bookId);
 }
