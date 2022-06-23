@@ -7,6 +7,7 @@ import com.shop.bookshop.entity.enums.ReturnCode;
 import com.shop.bookshop.entity.result.ResultData;
 import com.shop.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

@@ -14,6 +14,8 @@ public class Book {
     private Integer id;
     private String bookName;
     private Double price;
+    private String author;
+
     @TableField("ISBN")
     private String ISBN;
     private String publisher;

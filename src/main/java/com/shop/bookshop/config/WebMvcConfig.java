@@ -2,14 +2,13 @@ package com.shop.bookshop.config;
 
 import com.shop.bookshop.interceptor.TokenInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     private TokenInterceptor tokenInterceptor;
     @Autowired
@@ -18,8 +17,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry){
+        Path path = Paths.get("image");
+        String absolutePath = path.toFile().getAbsolutePath();
+        registry.addResourceHandler("/image/**").addResourceLocations("file:/" + absolutePath + "/");
+    }
+
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register", "/image/*");
+        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/image/*", "/register", "/booklist");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
     @Override
@@ -29,13 +35,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .allowedOriginPatterns("*");
-
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry){
-        Path path = Paths.get("image");
-        String absolutePath = path.toFile().getAbsolutePath();
-        registry.addResourceHandler("/image/**").addResourceLocations("file:/" + absolutePath + "/");
     }
 }
