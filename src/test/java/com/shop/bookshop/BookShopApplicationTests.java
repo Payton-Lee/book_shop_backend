@@ -56,4 +56,8 @@ class BookShopApplicationTests {
     void testAddressList() {
         System.out.println(addressService.getAddressListByUserId(1));
     }
+    @Test
+    void pageOrderList() {
+        System.out.println(orderService.pageOrderListByUserId(1, 4, "北纬", 1));
+    }
 }

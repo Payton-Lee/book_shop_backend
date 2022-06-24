@@ -23,6 +23,7 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
         QueryWrapper<Book> wrapper = new QueryWrapper<>();
         Page<Book> bookPage = new Page<>(current, size);
         if(!StringUtils.isEmpty(queryInfo)) {
+            System.out.println(queryInfo);
             wrapper.like("book_name", queryInfo);
         }
         return bookMapper.pageBookList(bookPage, wrapper);

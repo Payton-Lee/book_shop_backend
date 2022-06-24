@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface BookMapper extends BaseMapper<Book> {
     @Select("SELECT sp_book.id AS id, book_name, price, author, ISBN, publisher, in_stock, image FROM" +
-            " sp_book_image LEFT JOIN sp_book ON sp_book.id = sp_book_image.book_id\n")
+            " sp_book LEFT JOIN sp_book_image ON sp_book.id = sp_book_image.book_id  ${ew.customSqlSegment}\n")
     <P extends IPage<Book>> P pageBookList(P page, @Param(Constants.WRAPPER) Wrapper<Book> queryWrapper);
     @Select("SELECT sp_book.id AS id, book_name, price, author, ISBN, publisher, in_stock, image FROM" +
             " sp_book_image LEFT JOIN sp_book ON sp_book.id = sp_book_image.book_id WHERE sp_book.id = #{bookId}\n")
